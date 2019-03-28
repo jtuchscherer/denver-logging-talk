@@ -34,7 +34,7 @@ Mapped Diagnostic Context (MDC) support
 
 ---
 
-## Why Logging matters
+## What do we use logs for
 
 * Troubleshooting of systems <!-- .element: class="fragment fade-in"  -->
 * Preemptive monitoring of systems <!-- .element: class="fragment fade-in"  -->
@@ -51,7 +51,7 @@ And sometimes we put important information or events in logs, like whenever a si
 
 ## Detour: Regulations
 
-* HIIPA, PCI-DSS, NERC, SOX...
+* HIPAA, PCI-DSS, NERC, SOX...
 * "adequate logging system"
 * "audit logs"
 
@@ -71,21 +71,22 @@ Note:
 
 ## Other types of observability data
 
-* Standard Application Logs <!-- .element: class="fragment fade-in"  -->
-* Exception Logs <!-- .element: class="fragment fade-in"  -->
-* Structured Logs <!-- .element: class="fragment fade-in"  -->
-* Events <!-- .element: class="fragment fade-in"  -->
-* Metrics <!-- .element: class="fragment fade-in"  -->
+* Standard Application Logs 
+* Exception Logs 
+* Structured Logs 
+* Tracing logs 
+* Events 
+* Metrics 
 
 Note:
 People came up with some other ways to troubleshoot applications
 
 ---
 
-## Why Logging matters
+## Why Good Logging matters
 
-Log storage is difficult <!-- .element: class="fragment fade-in"  -->
-Log transport is difficult <!-- .element: class="fragment fade-in"  -->
+* Log storage is difficult <!-- .element: class="fragment fade-in"  -->
+* Log transport is difficult <!-- .element: class="fragment fade-in"  -->
 
 Note:
 Log storage is expensive
@@ -107,6 +108,22 @@ EPS
 
 Let's talk about loggregator
 
+---
+
+## What is loggregator?
+
+#### logging transport
+
+|             | Logs | Metrics |
+| ----------- | ----------- |
+| Apps      | yes | yes |
+| Platform   | no | yes |
+
+
+---
+
+## Demo time
+
 Note:
 Demo
   1. cf logs
@@ -118,6 +135,10 @@ Demo
 ---
 
 ## Loggregator Architecture
+
+---
+
+![Loggregator Architecture](./images/loggregator-arch.png)
 
 
 ---
@@ -134,11 +155,13 @@ Note:
 
 ## Loggregator History
 
-Note:
-  1. streaming pipe for all app logs
-  3. adding app metrics
-  2. adding component metrics
-  4. moving from UDP to gRPC for transport and mTLS
+
+  1. Stream for all app logs
+  3. Addition of metrics
+  5. Introdcution of scalable syslog drain system
+  4. Move from UDP to gRPC for transport and mTLS
+  5. Introdcution of even more scalable syslog drain system
+
 
 ---
 
